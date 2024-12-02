@@ -1,0 +1,156 @@
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    background-image: url('/static/css/bg.jpg'); /* Ensure correct path for the image */
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    color: #333;
+}
+/* Content Text Styling */
+.content h1,
+.content p {
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Optional: adds a shadow for better readability */
+}
+
+
+/* Header Section */
+.header {
+    height: 100vh;
+    background-image: url('bg.jpg'); /* Ensure correct path for the header background image */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Navigation Bar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    position: absolute;
+    top: 20px;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #f39c12; /* Vibrant color for the logo */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 300;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #f39c12; /* Highlight color for links on hover */
+}
+
+/* Chat Container */
+#chat-container {
+    max-width: 600px;
+    height: 400px; /* Fixed height for the chat container */
+    margin: 50px auto;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Ensures input stays at the bottom */
+}
+
+#messages {
+    flex: 1; /* Takes up available space */
+    overflow-y: auto; /* Allows scrolling for messages */
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+
+/* Input Container */
+#input-container {
+    display: flex;
+    gap: 10px;
+    margin-top: auto; /* Ensures input stays at the bottom */
+}
+
+
+#user-input {
+    flex: 1; /* Input field takes up remaining space */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#send-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#send-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Messages Styling */
+.user-message, .ai-message {
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.user-message {
+    background: #d1e7dd; /* Soft green for user messages */
+    align-self: flex-start;
+}
+
+.ai-message {
+    background: #f8d7da; /* Soft red for AI messages */
+    align-self: flex-end;
+}
+
+/* Centered Heading Styling */
+.head {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}

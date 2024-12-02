@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.O.A.R</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="overlay">
+            <!-- Navigation Bar -->
+            <nav>
+                <div class="logo">S.O.A.R</div>
+                <ul class="nav-links">
+                    <li><a href="https://homesoar.vercel.app">Home</a></li>
+                </ul>
+            </nav>
+
+            <!-- Heading and Chat Box -->
+            <div class="content">
+                <h1>    </h1>
+                <p>Your AI Companion for a Safer and Smarter Experience</p>
+
+                <!-- Chat Container -->
+                <div id="chat-container">
+                    <div id="messages"></div>
+                    <div id="input-container">
+                        <input type="text" id="user-input" placeholder="Type your message...">
+                        <button id="send-btn">Send</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+    </header>
+
+    <script>
+        // Function to send a message
+async function sendMessage() {
+    const input = document.getElementById('user-input');
+    const userMessage = input.value.trim();
+
+    if (!userMessage) return;
+
+    const messagesDiv = document.getElementById('messages');
+    const userMsgDiv = document.createElement('div');
+    userMsgDiv.textContent = "You: " + userMessage;
+    userMsgDiv.className = "user-message";
+    messagesDiv.appendChild(userMsgDiv);
+
+    input.value = ''; // Clear input field
+
+    // Auto-scroll to the bottom
+    autoScroll();
+
+    try {
+        const response = await fetch('/send_message', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: userMessage })
+        });
+
+        const data = await response.json();
+
+        if (data.error) {
+            alert(data.error);
+        } else {
+            const aiMsgDiv = document.createElement('div');
+            aiMsgDiv.textContent = "Soar: " + data.response;
+            aiMsgDiv.className = "ai-message";
+            messagesDiv.appendChild(aiMsgDiv);
+
+            // Auto-scroll to the bottom
+            autoScroll();
+        }
+    } catch (err) {
+        alert("Error sending message: " + err.message);
+    }
+}
+
+// Function to handle Enter key press
+document.getElementById('user-input').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
+});
+
+// Event listener for Send button
+document.getElementById('send-btn').addEventListener('click', sendMessage);
+
+// Auto-scroll function
+function autoScroll() {
+    const messagesDiv = document.getElementById('messages');
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+    </script>
+</body>
+</html>
